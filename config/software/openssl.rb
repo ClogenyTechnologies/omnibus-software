@@ -25,7 +25,7 @@ dependency "libgcc"
 if platform == "aix"
   # XXX: OpenSSL has an open bug on 1.0.1e where it fails to install on AIX
   #      http://rt.openssl.org/Ticket/Display.html?id=2986&user=guest&pass=guest
-  version "1.0.1c"
+  version "1.0.1d"
   source :url => "http://www.openssl.org/source/openssl-1.0.1c.tar.gz",
          :md5 => "ae412727c8c15b67880aef7bd2999b2e"
 else
