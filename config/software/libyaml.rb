@@ -27,16 +27,15 @@ configure_env =
   case platform
   when "aix"
     {
-      "CC" => "xlc -q64",
-      "CXX" => "xlC -q64",
+      "CC" => "xlc -q32",
+      "CXX" => "xlC -q32",
       "LD" => "ld -b64",
-      "CFLAGS" => "-q64 -I#{install_dir}/embedded/include -O",
-      "LDFLAGS" => "-q64 -Wl,-blibpath:/usr/lib:/lib",
-      "OBJECT_MODE" => "64",
-      "ARFLAGS" => "-X64 cru",
-      "LD" => "ld -b64",
-      "OBJECT_MODE" => "64",
-      "ARFLAGS" => "-X64 cru "
+      "CFLAGS" => "-q32 -I#{install_dir}/embedded/include -O",
+      "LDFLAGS" => "-q32 -Wl,-blibpath:/usr/lib:/lib",
+      "OBJECT_MODE" => "32",
+      "ARFLAGS" => "-X32 cru",
+      "LD" => "ld -b32",
+      "OBJECT_MODE" => "32"
     }
   when "mac_os_x"
     {
