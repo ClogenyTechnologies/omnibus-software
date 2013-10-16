@@ -79,13 +79,13 @@ env =
       # We also need prezl's M4 instead of picking up /usr/bin/m4 which
       # barfs on ruby.
       #
-      "CC" => "xlc -q64",
-      "CXX" => "xlC -q64",
-      "LD" => "ld -b64",
-      "CFLAGS" => "-q64 -I#{install_dir}/embedded/include -g",
-      "LDFLAGS" => "-q64 -L#{install_dir}/embedded/lib -Wl,-brtl -Wl,-blibpath:#{install_dir}/embedded/lib:/usr/lib:/lib",
-      "OBJECT_MODE" => "64",
-      "ARFLAGS" => "-X64 cru",
+      "CC" => "xlc -q32",
+      "CXX" => "xlC -q32",
+      "LD" => "ld -b32",
+      "CFLAGS" => "-q32 -I#{install_dir}/embedded/include -g",
+      "LDFLAGS" => "-q32 -L#{install_dir}/embedded/lib -Wl,-brtl -Wl,-blibpath:#{install_dir}/embedded/lib:/usr/lib:/lib",
+      "OBJECT_MODE" => "32",
+      "ARFLAGS" => "-X32 cru",
       "M4" => "/opt/freeware/bin/m4",
       "warnflags" => "-qinfo=por"
     }
