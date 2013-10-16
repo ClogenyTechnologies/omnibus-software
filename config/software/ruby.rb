@@ -97,6 +97,16 @@ env =
   end
 
 build do
+if platform == "aix"
+  configure_command = ["./configure",
+                       "--prefix=#{install_dir}/embedded",
+                       "--with-out-ext=fiddle",
+                       "--enable-shared",
+                       "--enable-libedit",
+                       "--enable-libtool",
+                       "--with-ext=psych",
+                       "--disable-install-doc"]
+else
   configure_command = ["./configure",
                        "--prefix=#{install_dir}/embedded",
                        "--with-out-ext=fiddle",
@@ -104,7 +114,7 @@ build do
                        "--enable-libedit",
                        "--with-ext=psych",
                        "--disable-install-doc"]
-
+end
   case platform
   when "aix"
     patch :source => "ruby-aix-configure.patch", :plevel => 1

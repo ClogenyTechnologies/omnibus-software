@@ -32,11 +32,11 @@ env = case platform
           "PATH" => "#{install_dir}/embedded/bin:" + ENV['PATH'],
           "LDFLAGS" => "-Wl,-brtl -Wl,-blibpath:#{install_dir}/embedded/lib:/usr/lib:/lib -L#{install_dir}/embedded/lib",
           "CXXFLAGS" => "-I#{install_dir}/embedded/include",
-          "OBJECT_MODE" => "64",
-          "CC" => "gcc -maix64",
-          "CXX" => "g++ -maix64",
-          "CFLAGS" => "-maix64 -I#{install_dir}/embedded/include",
-          "ARFLAGS" => "-X64 cru"
+          "OBJECT_MODE" => "32",
+          "CC" => "xlc -q32",
+          "CXX" => "xlC -q32",
+          "CFLAGS" => "-q32 -I#{install_dir}/embedded/include",
+          "ARFLAGS" => "-X32 cru"
         }
       else
         {
