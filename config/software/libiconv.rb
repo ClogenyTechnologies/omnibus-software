@@ -28,14 +28,14 @@ relative_path "libiconv-1.14"
 env = case platform
       when "aix"
         {
-          "CC" => "xlc -q64",
-          "CXX" => "xlC -q64",
-          "LDFLAGS" => "-q64 -Wl,-blibpath:/usr/lib:/lib",
-          "CFLAGS" => "-g -q64 -I#{install_dir}/embedded/include",
-          "CXXFLAGS" => "-g -q64 -I#{install_dir}/embedded/include",
-          "LD" => "ld -b64",
-          "OBJECT_MODE" => "64",
-          "ARFLAGS" => "-X64 cru "
+          "CC" => "xlc -q32",
+          "CXX" => "xlC -q32",
+          "LDFLAGS" => "-q32 -Wl,-blibpath:/usr/lib:/lib",
+          "CFLAGS" => "-O -q32 -I#{install_dir}/embedded/include",
+          "CXXFLAGS" => "-O -q32 -I#{install_dir}/embedded/include",
+          "LD" => "ld -b32",
+          "OBJECT_MODE" => "32",
+          "ARFLAGS" => "-X32 cru "
         }
       else
         {
@@ -59,7 +59,7 @@ def glibc_dropped_gets?
 end
 
 build do
-  patch :source => 'libiconv-1.14_srclib_stdio.in.h-remove-gets-declarations.patch' if glibc_dropped_gets?
+  patch :source => 'libiconv-1.14_srclib_stdio.in.h-remove-Oets-declarations.patch' if glibc_dropped_gets?
   command "./configure --prefix=#{install_dir}/embedded", :env => env
   command "make -j #{max_build_jobs}", :env => env
   command "make -j #{max_build_jobs} install-lib libdir=#{install_dir}/embedded/lib includedir=#{install_dir}/embedded/include", :env => env

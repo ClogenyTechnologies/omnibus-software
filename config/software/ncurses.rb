@@ -29,10 +29,10 @@ env = case platform
       when "aix"
         {
           "LDFLAGS" => "-brtl -Wl,-blibpath:#{install_dir}/embedded/lib:/usr/lib:/lib -L#{install_dir}/embedded/lib",
-          "CFLAGS" => "-g -I#{install_dir}/embedded/include",
-          "OBJECT_MODE" => "64",
-          "CC" => "xlc -q64",
-          "CXX" => "xlC -q64"
+          "CFLAGS" => "-O -I#{install_dir}/embedded/include",
+          "OBJECT_MODE" => "32",
+          "CC" => "xlc -q32",
+          "CXX" => "xlC -q32"
         }
       else
         {
