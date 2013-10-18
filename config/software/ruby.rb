@@ -157,4 +157,5 @@ build do
   command configure_command.join(" "), :env => env
   command "#{make_binary} -j #{max_build_jobs}", :env => env
   command "#{make_binary} -j #{max_build_jobs} install", :env => env
+  command "rm #{install_dir}/embedded/lib/ruby/1.9.1/powerpc-aix6.1.0.0/fiddle.so", :env => env
 end
