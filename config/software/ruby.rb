@@ -103,6 +103,9 @@ build do
                        "--enable-shared",
                        "--enable-libedit",
                        "--with-ext=psych",
+                       "--with-out-ext=tcl",
+                       "--with-out-ext=tk",
+                       "--with-ext=psych",
                        "--disable-install-doc"]
 
   case platform
