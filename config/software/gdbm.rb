@@ -25,6 +25,18 @@ source :url => "http://ftp.gnu.org/gnu/gdbm/gdbm-1.9.1.tar.gz",
 
 relative_path "gdbm-1.9.1"
 
+env =
+  case platform
+  when "aix"
+    {
+      "OBJECT_MODE" => "64",
+      "CC" => "xlc -q64",
+      "CXX" => "xlC -q64"
+    }
+  else
+    {}
+  end
+
 build do
   configure_command = ["./configure",
                        "--prefix=#{install_dir}/embedded"]
@@ -33,7 +45,7 @@ build do
     configure_command << "--with-pic"
   end
 
-  command configure_command.join(" ")
-  command "make -j #{max_build_jobs}"
-  command "make install"
+  command configure_command.join(" "), :env => env
+  command "make -j #{max_build_jobs}", :env => env
+  command "make install", :env => env
 end
