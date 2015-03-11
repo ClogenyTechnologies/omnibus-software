@@ -36,6 +36,7 @@ build do
   end
 
   patch source: "patch-ppc64le-configure", plevel: 1
+  patch source: "patch-ppc64le-ldemulation", plevel: 1
 
   command configure_command, env: env
 
