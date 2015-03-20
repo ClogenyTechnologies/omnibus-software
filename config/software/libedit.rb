@@ -1,4 +1,4 @@
-#
+
 # Copyright 2012-2014 Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +19,9 @@ default_version "20120601-3.0"
 
 dependency "ncurses"
 
-version "20120601-3.0" do
-  source md5: "e50f6a7afb4de00c81650f7b1a0f5aea"
-end
-
-version "20130712-3.1" do
-  source md5: "0891336c697362727a1fa7e60c5cb96c"
-end
+version("20120601-3.0") { source md5: "e50f6a7afb4de00c81650f7b1a0f5aea" }
+version("20130712-3.1") { source md5: "0891336c697362727a1fa7e60c5cb96c" }
+version("20141030-3.1") { source md5: "5f18e63346d31b877cdf36b5c59b810b" }
 
 source url: "http://www.thrysoee.dk/editline/libedit-#{version}.tar.gz"
 
@@ -40,8 +36,8 @@ build do
     patch source: "freebsd-vi-fix.patch"
   end
 
-  if ohai["kernel"]["machine"] == "ppc64le"
-    patch source: "patch-ppc64le-configure", plevel: 1
+  if version == "20120601-3.0" and ohai["kernel"]["machine"] == "ppc64le"
+    patch source: "v20120601-3.0.ppc64le-configure.patch"
   end
 
   command "./configure" \
